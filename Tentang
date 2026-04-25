@@ -1,52 +1,45 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Kami | Kayon Gallery</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #f9fbf9; }
-        nav { background: #0d9488; padding: 15px; text-align: center; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
-        .container { max-width: 800px; margin: 40px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        h1 { color: #0d9488; }
-        .pesan-pribadi { background: #f1f5f9; padding: 20px; border-left: 5px solid #0d9488; font-style: italic; margin: 20px 0; }
-        footer { text-align: center; padding: 20px; font-size: 0.9rem; color: #666; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kayon Gallery</title>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">Beranda</a>
-        <a href="tentang.html">Tentang</a>
-    </nav>
+  <h1>Tentang Kayon Gallery</h1>
 
-    <div class="container">
-        <h1>Tentang Kayon Gallery</h1>
-        <p>Selamat datang di <strong>Kayon Gallery</strong>, sebuah ruang sederhana untuk berbagi kebaikan dari alam, khususnya dari apa yang ada di dapur kita sendiri.</p>
+  <p>
+    Kayon Gallery adalah website sederhana yang saya buat untuk mencatat
+    dan berbagi informasi tentang kesehatan harian, herbal, dan manfaat
+    bahan dapur untuk tubuh.
+  </p>
 
-        <div class="pesan-pribadi">
-            "Website ini berawal dari keinginan saya untuk mendokumentasikan resep-resep herbal harian sebagai pengingat bagi diri saya sendiri, sekaligus berbagi manfaat bagi siapa saja yang ingin hidup lebih sehat dengan cara alami."
-        </div>
+  <p>
+    Website ini juga menjadi catatan pribadi saya agar tidak lupa dengan
+    kebiasaan sehat, resep herbal sederhana, dan pengalaman menggunakan
+    bahan alami seperti jahe, kunyit, serai, madu, dan bahan dapur lainnya.
+  </p>
 
-        <h3>Visi & Misi</h3>
-        <ul>
-            <li><strong>Berbagi Edukasi:</strong> Menginformasikan kegunaan bahan-bahan dapur (seperti jahe, kunyit, serai) untuk kesehatan harian.</li>
-            <li><strong>Kembali ke Alam:</strong> Mengajak orang lain untuk lebih mengenal solusi herbal yang mudah ditemukan di sekitar kita.</li>
-            <li><strong>Rekomendasi Terpilih:</strong> Menyediakan link produk kesehatan pilihan dari Shopee untuk memudahkan pembaca mendapatkan bahan berkualitas yang saya gunakan.</li>
-        </ul>
+  <h2>Tujuan Website Ini</h2>
 
-        <h3>Penting untuk Diketahui</h3>
-        <p>Seluruh informasi di sini bersifat informatif berdasarkan pengalaman pribadi dan pengetahuan umum. Saya sangat menyarankan Anda untuk tetap berkonsultasi dengan tenaga medis jika memiliki kondisi kesehatan tertentu.</p>
+  <ul>
+    <li>Berbagi informasi kesehatan sederhana.</li>
+    <li>Mencatat manfaat bahan dapur untuk kesehatan.</li>
+    <li>Mengingatkan diri sendiri untuk hidup lebih sehat.</li>
+    <li>Memberikan rekomendasi produk kesehatan dari Shopee sebagai tambahan.</li>
+  </ul>
 
-        <p>Terima kasih sudah berkunjung. Mari sehat bersama dari dapur kita!</p>
-        
-        <p>Salam hangat,<br><strong>Risqi Maulana</strong></p>
-    </div>
+  <h2>Catatan Penting</h2>
 
-    <footer>
-        &copy; 2024 Kayon Gallery Terapi
-    </footer>
+  <p>
+    Informasi di website ini bersifat umum dan bukan pengganti saran dokter.
+    Jika memiliki keluhan serius, sebaiknya tetap berkonsultasi dengan tenaga medis.
+  </p>
+
+  <p>
+    <a href="index.html">Kembali ke Beranda</a>
+  </p>
 
 </body>
 </html>
