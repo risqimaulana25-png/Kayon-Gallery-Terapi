@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manfaat Jahe</title>
+</head>
+<body>
+
+  <h1>Manfaat Jahe untuk Kesehatan Harian</h1>
+
+  <p>
+    Jahe adalah salah satu bahan dapur yang sering digunakan untuk membantu
+    menghangatkan tubuh.
+  </p>
+
+  <h2>Cara Saya Menggunakan Jahe</h2>
+
+  <ol>
+    <li>Siapkan 2 sampai 3 iris jahe.</li>
+    <li>Rebus dengan air secukupnya.</li>
+    <li>Minum saat hangat.</li>
+  </ol>
+
+  <h2>Catatan Pribadi</h2>
+
+  <p>
+    Saya biasanya minum jahe hangat saat badan terasa kurang enak atau tenggorokan mulai tidak nyaman.
+  </p>
+
+  <h2>Disclaimer</h2>
+
+  <p>
+    Informasi ini hanya catatan pribadi dan bukan pengganti nasihat medis.
+  </p>
+
+  <p>
+    <a href="index.html">Kembali ke Beranda</a>
+  </p>
+
+</body>
+</html>
