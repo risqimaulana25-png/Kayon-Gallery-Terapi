@@ -1,45 +1,67 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tentang Kayon Gallery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami | Kayon Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --secondary: #1e293b;
+            --light: #f8fafc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--light); color: var(--secondary); line-height: 1.6; }
+
+        nav { background: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-decoration: none; }
+        nav a { text-decoration: none; color: var(--secondary); margin-left: 20px; font-weight: 500; }
+
+        .container { max-width: 800px; margin: 50px auto; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        h1 { color: var(--primary); margin-bottom: 20px; }
+        h2 { color: var(--primary); margin-top: 30px; margin-bottom: 10px; }
+        .pesan-pribadi { background: #f1f5f9; padding: 20px; border-left: 5px solid var(--primary); font-style: italic; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        
+        footer { background: var(--secondary); color: white; text-align: center; padding: 30px; margin-top: 50px; }
+        .btn-back { display: inline-block; margin-top: 20px; color: var(--primary); text-decoration: none; font-weight: bold; }
+    </style>
 </head>
 <body>
 
-  <h1>Tentang Kayon Gallery</h1>
+    <nav>
+        <a href="index.html" class="logo">Kayon Gallery</a>
+        <div>
+            <a href="index.html">Beranda</a>
+            <a href="tentang.html">Tentang</a>
+        </div>
+    </nav>
 
-  <p>
-    Kayon Gallery adalah website sederhana yang saya buat untuk mencatat
-    dan berbagi informasi tentang kesehatan harian, herbal, dan manfaat
-    bahan dapur untuk tubuh.
-  </p>
+    <div class="container">
+        <h1>Tentang Kayon Gallery</h1>
+        <p>Selamat datang di <strong>Kayon Gallery</strong>. Website ini adalah ruang sederhana yang saya dedikasikan untuk berbagi informasi seputar kesehatan alami.</p>
 
-  <p>
-    Website ini juga menjadi catatan pribadi saya agar tidak lupa dengan
-    kebiasaan sehat, resep herbal sederhana, dan pengalaman menggunakan
-    bahan alami seperti jahe, kunyit, serai, madu, dan bahan dapur lainnya.
-  </p>
+        <div class="pesan-pribadi">
+            "Awalnya, saya membuat website ini untuk mengingatkan diri saya sendiri tentang resep-resep herbal harian dan manfaat bahan dapur. Namun, saya pikir akan lebih baik jika informasi ini juga bisa bermanfaat bagi orang lain."
+        </div>
 
-  <h2>Tujuan Website Ini</h2>
+        <h2>Misi Saya</h2>
+        <p>Saya ingin mendokumentasikan bagaimana bahan-bahan sederhana yang ada di dapur kita—seperti jahe, kunyit, dan serai—ternyata memiliki manfaat luar biasa untuk kesehatan tubuh sehari-hari.</p>
 
-  <ul>
-    <li>Berbagi informasi kesehatan sederhana.</li>
-    <li>Mencatat manfaat bahan dapur untuk kesehatan.</li>
-    <li>Mengingatkan diri sendiri untuk hidup lebih sehat.</li>
-    <li>Memberikan rekomendasi produk kesehatan dari Shopee sebagai tambahan.</li>
-  </ul>
+        <h2>Produk Rekomendasi</h2>
+        <p>Selain berbagi informasi, saya juga menyertakan beberapa link produk kesehatan dari Shopee. Produk yang saya pilihkan adalah produk yang menurut saya berkualitas dan menunjang gaya hidup sehat kita.</p>
 
-  <h2>Catatan Penting</h2>
+        <p>Terima kasih sudah berkunjung ke catatan pribadi saya ini. Mari hidup sehat mulai dari dapur kita sendiri!</p>
+        
+        <p>Salam hangat,<br><strong>Risqi Maulana</strong></p>
 
-  <p>
-    Informasi di website ini bersifat umum dan bukan pengganti saran dokter.
-    Jika memiliki keluhan serius, sebaiknya tetap berkonsultasi dengan tenaga medis.
-  </p>
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+    </div>
 
-  <p>
-    <a href="index.html">Kembali ke Beranda</a>
-  </p>
+    <footer>
+        <p>&copy; 2024 Kayon Gallery Terapi</p>
+    </footer>
 
 </body>
 </html>
