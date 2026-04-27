@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terapi Relaksasi | Kayon Gallery Terapi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --hijau: #1D6B44;
+    --hijau-gelap: #0F3D28;
+    --hijau-muda: #A8D5B5;
+    --krem: #F5F0E8;
+    --krem-gelap: #E8DEC8;
+    --emas: #C9A84C;
+    --emas-muda: #F0D98A;
+    --putih: #FDFAF5;
+    --teks-gelap: #1A2E1F;
+    --teks-abu: #5A6B60;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--putih);
+    color: var(--teks-gelap);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,250,245,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--krem-gelap);
+    padding: 0 2rem; height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 24px rgba(15,61,40,0.08); }
+  .nav-logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--hijau-gelap); font-weight: 700; text-decoration: none; }
+  .nav-logo span { color: var(--emas); font-style: italic; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--teks-abu); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--hijau); }
+  .nav-cta { background: var(--hijau) !important; color: #fff !important; padding: 0.5rem 1.2rem !important; border-radius: 50px; }
+  .nav-cta:hover { background: var(--hijau-gelap) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--hijau-gelap); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--putih); border-bottom: 1px solid var(--krem-gelap); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { text-decoration: none; color: var(--teks-gelap); font-size: 1rem; font-weight: 500; padding: 0.5rem 0; border-bottom: 1px solid var(--krem-gelap); }
+
+  /* HERO */
+  .hero {
+    min-height: 70vh;
+    background: linear-gradient(150deg, var(--hijau-gelap) 0%, #1A5C38 60%, #2A7A4F 100%);
+    display: flex; align-items: center;
+    padding: 110px 2rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: rgba(168,213,181,0.07); top: -120px; right: -100px; }
+  .hero::after { content: ''; position: absolute; font-family: var(--font-display); font-size: 18rem; color: rgba(255,255,255,0.03); bottom: -3rem; left: -1rem; content: '🌿'; }
+
+  .hero-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+  .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+  .breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--emas-muda); }
+  .hero-badge { display: inline-block; background: rgba(201,168,76,0.2); color: var(--emas-muda); border: 1px solid rgba(201,168,76,0.4); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); color: #fff; line-height: 1.15; margin-bottom: 1.2rem; }
+  .hero h1 em { color: var(--emas-muda); font-style: italic; }
+  .hero-desc { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 560px; margin: 0 auto 2rem; }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 2.5rem; }
+  .hero-stat { text-align: center; }
+  .hero-stat .num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--emas-muda); line-height: 1; }
+  .hero-stat .lbl { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; }
+
+  /* SECTION */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label { display: inline-block; color: var(--hijau); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 0.6rem; }
+  .section-title { font-family: var(--font-display); font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: var(--hijau-gelap); line-height: 1.2; margin-bottom: 1rem; }
+  .section-desc { color: var(--teks-abu); font-size: 1rem; max-width: 600px; margin-bottom: 3rem; }
+
+  /* APA ITU TERAPI */
+  .intro-section { background: var(--krem); }
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .intro-text p { color: var(--teks-abu); font-size: 1rem; line-height: 1.85; margin-bottom: 1rem; }
+  .intro-visual { background: linear-gradient(135deg, var(--hijau), #2A7A4F); border-radius: 24px; padding: 2.5rem; color: white; }
+  .benefit-list { list-style: none; }
+  .benefit-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+  .benefit-list li:last-child { border-bottom: none; }
+  .benefit-list li span { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  /* BAHAN HERBAL */
+  .herbal-section { background: var(--putih); }
+  .herbal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .herbal-card {
+    background: var(--putih);
+    border: 1px solid var(--krem-gelap);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .herbal-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(15,61,40,0.1); border-color: var(--hijau-muda); }
+  .herbal-header {
+    background: linear-gradient(135deg, var(--hijau-gelap), #1D6B44);
+    padding: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .herbal-emoji { font-size: 2rem; }
+  .herbal-header h3 { font-family: var(--font-display); font-size: 1.15rem; color: #fff; }
+  .herbal-header p { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
+  .herbal-body { padding: 1.5rem; }
+  .herbal-body p { color: var(--teks-abu); font-size: 0.93rem; line-height: 1.75; margin-bottom: 1rem; }
+  .herbal-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag { background: var(--krem); color: var(--hijau); font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 50px; }
+
+  /* TEKNIK TERAPI */
+  .teknik-section { background: var(--krem); }
+  .teknik-steps { display: flex; flex-direction: column; gap: 2rem; }
+  .teknik-step { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; align-items: start; }
+  .step-num {
+    width: 64px; height: 64px; border-radius: 18px;
+    background: linear-gradient(135deg, var(--hijau), var(--hijau-gelap));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--emas-muda);
+    flex-shrink: 0;
+  }
+  .step-content h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--hijau-gelap); margin-bottom: 0.5rem; }
+  .step-content p { color: var(--teks-abu); font-size: 0.95rem; line-height: 1.75; }
+  .step-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+  .step-pill { background: rgba(29,107,68,0.1); color: var(--hijau); font-size: 0.78rem; padding: 0.2rem 0.65rem; border-radius: 50px; font-weight: 500; }
+
+  /* MANFAAT */
+  .manfaat-section { background: var(--putih); }
+  .manfaat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .manfaat-card {
+    background: var(--krem);
+    border-radius: 18px; padding: 1.5rem;
+    border: 1px solid var(--krem-gelap);
+    transition: all 0.3s;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .manfaat-card:hover { border-color: var(--hijau-muda); background: #fff; }
+  .manfaat-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .manfaat-card h4 { font-family: var(--font-display); font-size: 1rem; color: var(--hijau-gelap); margin-bottom: 0.4rem; }
+  .manfaat-card p { color: var(--teks-abu); font-size: 0.88rem; line-height: 1.65; }
+
+  /* PAKET LAYANAN */
+  .paket-section { background: var(--krem); }
+  .paket-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .paket-card {
+    background: var(--putih); border-radius: 20px;
+    border: 1.5px solid var(--krem-gelap);
+    padding: 2rem; text-align: center;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .paket-card.featured {
+    border-color: var(--hijau);
+    background: var(--hijau-gelap); color: white;
+  }
+  .paket-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--emas); color: var(--hijau-gelap);
+    font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 50px;
+  }
+  .paket-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .paket-card h3 { font-family: var(--font-display); font-size: 1.25rem; color: var(--hijau-gelap); margin-bottom: 0.5rem; }
+  .paket-card.featured h3 { color: var(--emas-muda); }
+  .paket-durasi { font-size: 0.8rem; color: var(--teks-abu); margin-bottom: 1.25rem; }
+  .paket-card.featured .paket-durasi { color: rgba(255,255,255,0.6); }
+  .paket-list { list-style: none; text-align: left; margin-bottom: 1.5rem; }
+  .paket-list li { font-size: 0.9rem; color: var(--teks-abu); padding: 0.4rem 0; display: flex; align-items: center; gap: 0.6rem; }
+  .paket-card.featured .paket-list li { color: rgba(255,255,255,0.8); }
+  .paket-list li::before { content: '✓'; color: var(--hijau); font-weight: 700; }
+  .paket-card.featured .paket-list li::before { color: var(--emas-muda); }
+  .btn-pesan { display: block; background: var(--hijau); color: #fff; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
+  .btn-pesan:hover { background: var(--hijau-gelap); transform: translateY(-2px); }
+  .paket-card.featured .btn-pesan { background: var(--emas); color: var(--hijau-gelap); }
+  .paket-card.featured .btn-pesan:hover { background: var(--emas-muda); }
+  .paket-card:not(.featured):hover { border-color: var(--hijau-muda); box-shadow: 0 12px 32px rgba(15,61,40,0.08); }
+
+  /* CTA */
+  .cta-section { background: linear-gradient(135deg, var(--hijau-gelap), #1D6B44); padding: 5rem 2rem; text-align: center; }
+  .cta-section h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: #fff; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .btn-wa { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--emas); color: var(--hijau-gelap); padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.2s; }
+  .btn-wa:hover { background: var(--emas-muda); transform: translateY(-2px); }
+
+  /* DISCLAIMER */
+  .disclaimer { background: var(--krem); border-left: 4px solid var(--hijau-muda); padding: 1.2rem 1.5rem; border-radius: 0 12px 12px 0; margin: 3rem auto 0; max-width: 900px; font-size: 0.88rem; color: var(--teks-abu); }
+
+  /* FOOTER */
+  footer { background: var(--hijau-gelap); color: rgba(255,255,255,0.7); padding: 2.5rem 2rem; text-align: center; font-size: 0.88rem; }
+  footer a { color: var(--emas-muda); text-decoration: none; }
+
+  /* ANIMASI */
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s, transform 0.6s; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .intro-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .teknik-step { grid-template-columns: 60px 1fr; gap: 1rem; }
+    .step-num { width: 52px; height: 52px; font-size: 1.2rem; border-radius: 14px; }
+    .hero-stats { gap: 2rem; }
+    section { padding: 3.5rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Kayon <span>Gallery</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#tentang">Tentang</a></li>
+    <li><a href="index.html#layanan">Layanan</a></li>
+    <li><a href="index.html#produk">Produk</a></li>
+    <li><a href="https://wa.me/62816268810" class="nav-cta">Konsultasi</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 Beranda</a>
+  <a href="index.html#tentang">Tentang</a>
+  <a href="index.html#layanan">Layanan</a>
+  <a href="index.html#produk">Produk</a>
+  <a href="https://wa.me/62816268810">💬 Konsultasi via WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Beranda</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.9)">Terapi Relaksasi</span>
+    </div>
+    <div class="hero-badge">🌿 Terapi Alami Tradisional</div>
+    <h1>Terapi Relaksasi<br><em>Holistik & Alami</em></h1>
+    <p class="hero-desc">Rasakan ketenangan mendalam dengan perpaduan teknik pijat tradisional Jawa dan bahan herbal pilihan. Tubuh kembali bugar, pikiran kembali jernih.</p>
+    <a href="https://wa.me/62816268810" class="btn-wa">💬 Pesan Sesi Terapi</a>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">8+</div><div class="lbl">Bahan Herbal Alami</div></div>
+      <div class="hero-stat"><div class="num">5</div><div class="lbl">Teknik Relaksasi</div></div>
+      <div class="hero-stat"><div class="num">500+</div><div class="lbl">Klien Puas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- APA ITU TERAPI RELAKSASI -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-text fade-up">
+        <span class="section-label">Mengenal Terapi</span>
+        <h2 class="section-title">Apa itu Terapi Relaksasi?</h2>
+        <p>Terapi relaksasi adalah metode yang bertujuan membawa tubuh dan pikiran ke kondisi tenang dan rileks. Dengan mengaktifkan sistem saraf parasimpatis, terapi ini membantu menurunkan hormon stres seperti kortisol, memperlambat detak jantung, dan memperlancar peredaran darah.</p>
+        <p>Di Kayon Gallery Terapi, kami menggabungkan kearifan lokal pijat tradisional Jawa dengan bahan-bahan herbal alami pilihan yang telah digunakan turun-temurun oleh nenek moyang kita untuk menjaga keseimbangan tubuh dan pikiran.</p>
+        <p>Setiap sesi terapi kami dirancang secara personal, disesuaikan dengan kebutuhan dan kondisi kesehatan setiap klien.</p>
+      </div>
+      <div class="intro-visual fade-up">
+        <div style="font-family:var(--font-display); font-size:1.1rem; color:var(--emas-muda); margin-bottom:1.2rem;">✦ Manfaat yang Anda Rasakan</div>
+        <ul class="benefit-list">
+          <li><span>🧘</span> Mengurangi stres dan kecemasan secara alami</li>
+          <li><span>💤</span> Meningkatkan kualitas tidur menjadi lebih nyenyak</li>
+          <li><span>🩸</span> Melancarkan sirkulasi darah ke seluruh tubuh</li>
+          <li><span>💪</span> Melemaskan otot tegang akibat aktivitas sehari-hari</li>
+          <li><span>🧠</span> Menjernihkan pikiran dan meningkatkan fokus</li>
+          <li><span>❤️</span> Menurunkan tekanan darah secara alami</li>
+          <li><span>✨</span> Kulit lebih bersinar dan terasa segar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAHAN HERBAL -->
+<section class="herbal-section">
+  <div class="container">
+    <span class="section-label">Bahan Alami</span>
+    <h2 class="section-title">8 Bahan Herbal Unggulan<br>dalam Terapi Kami</h2>
+    <p class="section-desc">Setiap bahan dipilih dengan cermat berdasarkan manfaat terapeutiknya yang telah terbukti secara tradisional maupun ilmiah.</p>
+    <div class="herbal-grid">
+
+      <div class="herbal-card fade-up">
+        <div class="herbal-header">
+          <div class="herbal-emoji">🌸</div>
+          <div><h3>Lavender</h3><p>Bunga Penenang Jiwa</p></div>
+        </div>
+        <div class="herbal-body">
+          <p>Aromaterapi lavender merupakan salah satu terapi komplementer paling populer. Aroma khasnya terbukti dapat menurunkan tingkat kecemasan, mengurangi nyeri, dan meningkatkan kualitas tidur. Sering digunakan dalam bentuk minyak esensial untuk pijat maupun diffuser.</p>
+          <div class="herbal-tags">
+            <span class="tag">Anti-stres</span>
+            <span class="tag">Penenang tidur</span>
+            <span class="tag">Aroma terapi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="herbal-card fade-up">
+        <div class="herbal-header">
+          <div class="herbal-emoji">🫚</div>
+          <div><h3>Minyak Kelapa</h3><p>Dasar Pijat Tradisional</p></div>
+        </div>
+        <div class="herbal-body">
+          <p>Minyak kelapa adalah bahan dasar utama dalam pijat tradisional Indonesia. Minyak ini dihangatkan dan dipadukan dengan rempah-rempah untuk melancarkan gerakan pijat, melembutkan kulit, sekaligus memberikan efek hangat yang menenangkan otot-otot yang tegang.</p>
+          <div class="herbal-tags">
+            <span class="tag">Pelembab kulit</span>
+            <span class="tag">Anti-inflamasi</span>
+            <span class="tag">Pijat</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="herbal-card fade-up">
+        <div class="herbal-header">
+          <div class="herbal-emoji">🫚</div>
+          <div><h3>Jahe Merah</h3><p>Rempah Penghangat Tubuh</p></div>
+        </div>
+        <div class="herbal-body">
+          <p>Jahe mengandung senyawa gingerol dan shogaol yang memiliki efek anti-inflamasi kuat. Dalam terapi relaksasi, jahe digunakan dalam campuran minyak pijat untuk memperlancar peredaran darah, meredakan pegal-pegal, dan memberikan sensasi hangat yang menyegarkan.</p>
+          <div class="herbal-tags">
+            <span class="tag">Pereda pegal</span>
+            <span class="tag">Melancarkan darah</span>
+            <span class="tag">Anti-radang</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="herbal-card fade-up">
+        <div class="herbal-header">
+          <div class="herbal-emoji">🌿</div>
+          <div><h3>Serai Wangi</h3><p>Aroma Segar Nusantara</p></div>
+        </div>
+        <div class="herbal-body">
+          <p>Serai adalah salah satu tanaman aromatik khas Indonesia yang sering dikombinasikan dalam minyak pijat tradisional. Aromanya yang segar memberikan efek menenangkan, sekaligus membantu mengendurkan otot yang tegang dan mengurangi kelelahan setelah aktivitas panjang.</p>
+          <div class="herbal-tags">
+            <span class="tag">Aroma segar</span>
+            <span class="tag">Relaksasi otot</span>
+            <span class="tag">Pengusir serangga</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="herbal-card fade-up">
+        <div class="herbal-header">
+          <div class="herbal-emoji">🌾</div>
+          <div><h3>Kunyit</h3><p>Ratu Rempah Anti-Radang</p></div>
+        </div>
+        <div class="herbal-body">
+          <p>Kandungan kurkumin dalam kunyit adalah antiinflamasi alami yang sangat kuat. Dalam terapi, kunyit digunakan dalam campuran lulur tubuh (boreh) untuk mengangkat sel kulit mati, merangsang regenerasi kulit, dan memberikan kehangatan pada sendi-sendi yang kaku.</p>
+          <div class="herbal-tags">
+            <span class="tag">Anti-inflamasi</span>
+            <span class="tag">Lulur tubuh</span>
+            <span class="tag">Kesehatan sendi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="herbal-card fade-up">
+        <div class="herbal-header">
+          <div class="herbal-emoji">🌴</div>
+          <div><h3>Kayu Putih</h3><p>Obat Serbaguna Tradisional</p></div>
+        </div>
+        <div class="herbal-body">
+          <p>Minyak kayu putih atau eucalyptus mengandung senyawa aktif yang memberikan sensasi hangat dan menyegarkan. Sangat efektif untuk memperlancar pernapasan, mengurangi ketegangan di area punggung dan bahu, serta memberikan efek relaksasi yang cepat terasa.</p>
+          <div class="herbal-tags">
+            <span class="tag">Pernapasan</span>
+            <span class="tag">Pijat refleksi</span>
+            <span class="tag">Relaksasi cepat</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="herbal-card fade-up">
+        <div class="herbal-header">
+          <div class="herbal-emoji">🌺</div>
+          <div><h3>Daun Pandan</h3><p>Pewangi Alami Nusantara</p></div>
+        </div>
+        <div class="herbal-body">
+          <p>Selain sebagai bahan masakan, daun pandan memiliki efek relaksasi alami. Aroma khasnya terbukti membantu meredakan stres dan kecemasan, meningkatkan kualitas tidur, serta memiliki sifat anti-inflamasi yang membantu meredakan nyeri sendi dan sakit kepala secara tradisional.</p>
+          <div class="herbal-tags">
+            <span class="tag">Anti-stres</span>
+            <span class="tag">Tidur nyenyak</span>
+            <span class="tag">Aroma terapi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="herbal-card fade-up">
+        <div class="herbal-header">
+          <div class="herbal-emoji">🌱</div>
+          <div><h3>Dlingo (Jeringau)</h3><p>Warisan Herbal Jawa</p></div>
+        </div>
+        <div class="herbal-body">
+          <p>Tanaman herbal khas Jawa yang mengandung senyawa asaron dan eugenol dengan efek menenangkan sistem saraf pusat. Digunakan secara tradisional sebagai pereda stres alami, membantu merangsang peredaran darah, dan mengendurkan otot yang tegang akibat tekanan pikiran.</p>
+          <div class="herbal-tags">
+            <span class="tag">Penenang saraf</span>
+            <span class="tag">Herbal Jawa</span>
+            <span class="tag">Anti-stres</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEKNIK TERAPI -->
+<section class="teknik-section">
+  <div class="container">
+    <span class="section-label">Proses Terapi</span>
+    <h2 class="section-title">5 Teknik Relaksasi<br>yang Kami Terapkan</h2>
+    <p class="section-desc">Setiap sesi terapi kami menggunakan pendekatan holistik yang menggabungkan beberapa teknik untuk hasil yang optimal.</p>
+    <div class="teknik-steps">
+
+      <div class="teknik-step fade-up">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Konsultasi & Persiapan Awal</h3>
+          <p>Sesi dimulai dengan konsultasi singkat untuk memahami kondisi kesehatan, keluhan utama, dan preferensi Anda. Terapis akan menyesuaikan teknik dan campuran minyak herbal yang paling tepat. Lingkungan dibuat tenang dengan alunan musik soothing dan wewangian aromaterapi lavender.</p>
+          <div class="step-pills"><span class="step-pill">Konsultasi personal</span><span class="step-pill">Pemilihan bahan herbal</span><span class="step-pill">Persiapan suasana</span></div>
+        </div>
+      </div>
+
+      <div class="teknik-step fade-up">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Teknik Pernapasan Dalam (Relaksasi Napas)</h3>
+          <p>Sebelum pijat dimulai, klien dibimbing untuk melakukan teknik pernapasan dalam (deep breathing). Menarik napas perlahan melalui hidung, menahan sejenak, lalu menghembuskan perlahan melalui mulut. Teknik ini mengaktifkan sistem saraf parasimpatis, menurunkan hormon kortisol, dan mempersiapkan tubuh untuk menerima terapi lebih efektif.</p>
+          <div class="step-pills"><span class="step-pill">Box breathing</span><span class="step-pill">Pernapasan diafragma</span><span class="step-pill">Meditasi singkat</span></div>
+        </div>
+      </div>
+
+      <div class="teknik-step fade-up">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Pijat Relaksasi dengan Minyak Herbal</h3>
+          <p>Inti dari terapi ini adalah pijat menggunakan campuran minyak kelapa hangat yang dipadukan dengan rempah-rempah pilihan seperti jahe, serai, atau kayu putih. Teknik pijat tradisional Jawa diterapkan dengan gerakan yang mengalir dan ritmis, berfokus pada area yang menumpuk ketegangan: punggung, bahu, leher, kaki, dan tangan.</p>
+          <div class="step-pills"><span class="step-pill">Pijat Jawa</span><span class="step-pill">Minyak rempah hangat</span><span class="step-pill">Teknik effleurage</span><span class="step-pill">Relaksasi otot dalam</span></div>
+        </div>
+      </div>
+
+      <div class="teknik-step fade-up">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Pijat Refleksi Aromaterapi</h3>
+          <p>Teknik pijat refleksi pada titik-titik saraf di telapak kaki dan tangan yang terhubung langsung dengan sistem organ tubuh. Dipadukan dengan aromaterapi lavender atau serai untuk memberikan pengalaman menyeluruh yang melibatkan indera penciuman dan sentuhan sekaligus. Efektif untuk meningkatkan kualitas tidur dan ketenangan mental.</p>
+          <div class="step-pills"><span class="step-pill">Pijat refleksi</span><span class="step-pill">Aromaterapi lavender</span><span class="step-pill">Titik saraf kaki</span></div>
+        </div>
+      </div>
+
+      <div class="teknik-step fade-up">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Perawatan Akhir & Lulur Herbal (Opsional)</h3>
+          <p>Sebagai penutup, dapat ditambahkan perawatan lulur tubuh dari campuran kunyit dan beras untuk mengangkat sel kulit mati dan membuat kulit bersinar. Terapis akan memberikan panduan perawatan mandiri di rumah menggunakan bahan herbal sederhana untuk mempertahankan efek relaksasi lebih lama.</p>
+          <div class="step-pills"><span class="step-pill">Lulur kunyit</span><span class="step-pill">Panduan mandiri</span><span class="step-pill">Konsultasi herbal</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MANFAAT -->
+<section class="manfaat-section">
+  <div class="container">
+    <span class="section-label">Manfaat Terbukti</span>
+    <h2 class="section-title">Apa yang Akan Anda Rasakan<br>Setelah Terapi?</h2>
+    <p class="section-desc">Manfaat terapi relaksasi bukan hanya dirasakan saat sesi berlangsung, tetapi juga berdampak jangka panjang bagi kesehatan Anda.</p>
+    <div class="manfaat-grid">
+      <div class="manfaat-card fade-up">
+        <div class="manfaat-icon">🧘</div>
+        <div><h4>Pikiran Lebih Tenang</h4><p>Hormon kortisol dan adrenalin menurun, membuat pikiran jauh lebih jernih dan tenang setelah sesi terapi.</p></div>
+      </div>
+      <div class="manfaat-card fade-up">
+        <div class="manfaat-icon">💤</div>
+        <div><h4>Tidur Lebih Nyenyak</h4><p>Sistem saraf parasimpatis yang aktif membantu tubuh lebih mudah rileks dan masuk ke tidur berkualitas.</p></div>
+      </div>
+      <div class="manfaat-card fade-up">
+        <div class="manfaat-icon">💪</div>
+        <div><h4>Otot Tidak Lagi Tegang</h4><p>Pijatan ritmis mengendurkan simpul ketegangan otot yang menumpuk akibat stres dan aktivitas fisik harian.</p></div>
+      </div>
+      <div class="manfaat-card fade-up">
+        <div class="manfaat-icon">🩸</div>
+        <div><h4>Sirkulasi Darah Lancar</h4><p>Teknik pijat memperlancar aliran darah sehingga oksigen dan nutrisi tersalurkan optimal ke seluruh sel tubuh.</p></div>
+      </div>
+      <div class="manfaat-card fade-up">
+        <div class="manfaat-icon">❤️</div>
+        <div><h4>Tekanan Darah Normal</h4><p>Relaksasi mendalam secara alami membantu menurunkan tekanan darah yang meningkat akibat stres berlebihan.</p></div>
+      </div>
+      <div class="manfaat-card fade-up">
+        <div class="manfaat-icon">✨</div>
+        <div><h4>Kulit Bersinar & Segar</h4><p>Lulur herbal mengangkat sel kulit mati dan merangsang regenerasi kulit, membuat kulit tampak lebih cerah.</p></div>
+      </div>
+      <div class="manfaat-card fade-up">
+        <div class="manfaat-icon">🔋</div>
+        <div><h4>Energi Kembali Pulih</h4><p>Tubuh yang rileks dan peredaran darah lancar membuat Anda terasa lebih bugar dan berenergi keesokan harinya.</p></div>
+      </div>
+      <div class="manfaat-card fade-up">
+        <div class="manfaat-icon">🧠</div>
+        <div><h4>Fokus & Konsentrasi Meningkat</h4><p>Pikiran yang tenang dan oksigen yang cukup ke otak membantu meningkatkan kemampuan fokus dan berpikir jernih.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAKET LAYANAN -->
+<section class="paket-section">
+  <div class="container">
+    <span class="section-label">Pilihan Paket</span>
+    <h2 class="section-title">Pilih Paket Terapi<br>yang Sesuai Kebutuhan Anda</h2>
+    <p class="section-desc">Hubungi kami via WhatsApp untuk informasi harga dan ketersediaan jadwal terapi.</p>
+    <div class="paket-grid">
+      <div class="paket-card fade-up">
+        <div class="paket-icon">🌿</div>
+        <h3>Paket Relaksasi Dasar</h3>
+        <p class="paket-durasi">⏱ 60 menit</p>
+        <ul class="paket-list">
+          <li>Konsultasi awal</li>
+          <li>Teknik pernapasan dalam</li>
+          <li>Pijat relaksasi minyak herbal</li>
+          <li>Aromaterapi lavender / serai</li>
+          <li>Panduan perawatan mandiri</li>
+        </ul>
+        <a href="https://wa.me/62816268810?text=Halo, saya tertarik dengan Paket Relaksasi Dasar (60 menit)" class="btn-pesan">Pesan Sekarang</a>
+      </div>
+      <div class="paket-card featured fade-up">
+        <div class="paket-badge">⭐ Terpopuler</div>
+        <div class="paket-icon">🌸</div>
+        <h3>Paket Relaksasi Premium</h3>
+        <p class="paket-durasi">⏱ 90 menit</p>
+        <ul class="paket-list">
+          <li>Konsultasi mendalam</li>
+          <li>Meditasi & pernapasan dalam</li>
+          <li>Pijat relaksasi minyak rempah</li>
+          <li>Pijat refleksi kaki</li>
+          <li>Aromaterapi lavender</li>
+          <li>Konsultasi herbal personal</li>
+        </ul>
+        <a href="https://wa.me/62816268810?text=Halo, saya tertarik dengan Paket Relaksasi Premium (90 menit)" class="btn-pesan">Pesan Sekarang</a>
+      </div>
+      <div class="paket-card fade-up">
+        <div class="paket-icon">👑</div>
+        <h3>Paket Spa Herbal Lengkap</h3>
+        <p class="paket-durasi">⏱ 120 menit</p>
+        <ul class="paket-list">
+          <li>Semua layanan Premium</li>
+          <li>Lulur kunyit & beras</li>
+          <li>Masker tubuh herbal (boreh)</li>
+          <li>Ramuan herbal minuman</li>
+          <li>Paket produk herbal mini</li>
+        </ul>
+        <a href="https://wa.me/62816268810?text=Halo, saya tertarik dengan Paket Spa Herbal Lengkap (120 menit)" class="btn-pesan">Pesan Sekarang</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <strong>⚠️ Catatan Penting:</strong> Terapi relaksasi bersifat komplementer untuk membantu menjaga kesehatan dan kebugaran tubuh. Bukan pengganti pengobatan medis. Konsultasikan dengan tenaga medis terlebih dahulu jika Anda memiliki riwayat penyakit kronis, sedang hamil, atau memiliki kondisi kesehatan khusus.
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <span class="section-label" style="color:var(--emas-muda)">Siap Merasakan Manfaatnya?</span>
+    <h2>Mulai Perjalanan Relaksasi<br>Anda Hari Ini</h2>
+    <p>Konsultasikan kebutuhan terapi Anda bersama kami. Kami siap membantu Anda menemukan keseimbangan tubuh dan pikiran yang sesungguhnya.</p>
+    <a href="https://wa.me/62816268810?text=Halo Kayon Gallery, saya ingin konsultasi tentang Terapi Relaksasi" class="btn-wa">💬 Chat WhatsApp Sekarang</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 <a href="index.html">Kayon Gallery Terapi</a>. Dikelola oleh Risqi Maulana.</p>
+  <p style="margin-top:0.5rem; font-size:0.8rem; color:rgba(255,255,255,0.4);">Malang, Jawa Timur &nbsp;|&nbsp; 📱 0816-268-810</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
