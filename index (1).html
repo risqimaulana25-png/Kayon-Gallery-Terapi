@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kayon Gallery Herbal | Jamu & Obat Herbal Alami Kediri</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --h:#1b3a2d;
+  --hm:#2d6a4f;
+  --hl:#52b788;
+  --hp:#d8f3dc;
+  --k:#faf6ec;
+  --km:#f0e6c4;
+  --c:#7b4f21;
+  --acc:#e9c46a;
+  --acc2:#c1440e;
+  --td:#1a1a1a;
+  --tm:#444;
+  --tl:#888;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--k);color:var(--td);line-height:1.7}
+
+/* ===== NAV ===== */
+nav{background:var(--h);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;height:64px}
+.nav-logo{font-family:'Cormorant Garamond',serif;color:var(--k);font-size:1.4rem;font-weight:600;text-decoration:none;letter-spacing:0.02em}
+.nav-logo span{color:var(--acc);font-style:italic}
+.nav-links{display:flex;gap:0;align-items:center}
+.nav-links a{color:rgba(250,246,236,.75);text-decoration:none;font-size:0.82rem;padding:0.5rem 1rem;transition:color .2s;letter-spacing:0.04em}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{background:var(--acc);color:var(--h)!important;border-radius:2rem;padding:.45rem 1.2rem!important;font-weight:600!important;margin-left:.5rem}
+.nav-cta:hover{background:#f5d07a!important;color:var(--h)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--k);border-radius:2px;transition:.3s}
+.mobile-menu{display:none;flex-direction:column;background:var(--h);padding:1rem 2rem 1.5rem;gap:.5rem}
+.mobile-menu a{color:rgba(250,246,236,.8);text-decoration:none;font-size:.9rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.mobile-menu.open{display:flex}
+
+/* ===== HERO ===== */
+.hero{background:var(--h);min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-rule='evenodd'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3Ccircle cx='0' cy='0' r='1.5'/%3E%3Ccircle cx='80' cy='0' r='1.5'/%3E%3Ccircle cx='0' cy='80' r='1.5'/%3E%3Ccircle cx='80' cy='80' r='1.5'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-leaf{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:500px;height:500px;opacity:.07;background:radial-gradient(ellipse,#52b788,transparent 70%)}
+.hero-content{position:relative;z-index:2;padding:4rem 2.5rem;max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(233,196,106,.15);border:1px solid rgba(233,196,106,.4);color:var(--acc);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;padding:.35rem 1rem;border-radius:2rem;margin-bottom:1.5rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:700;color:var(--k);line-height:1.15;margin-bottom:1.2rem}
+.hero h1 em{font-style:italic;color:var(--hl)}
+.hero p{color:rgba(250,246,236,.7);font-size:.95rem;margin-bottom:2rem;max-width:460px;line-height:1.8}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--acc);color:var(--h);padding:.75rem 1.8rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.88rem;transition:.2s;display:inline-flex;align-items:center;gap:.4rem}
+.btn-primary:hover{background:#f5d07a}
+.btn-outline{border:1px solid rgba(250,246,236,.3);color:rgba(250,246,236,.85);padding:.75rem 1.8rem;border-radius:.5rem;text-decoration:none;font-weight:500;font-size:.88rem;transition:.2s;display:inline-flex;align-items:center;gap:.4rem}
+.btn-outline:hover{border-color:var(--acc);color:var(--acc)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+.stat-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:.75rem;padding:1rem;text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--acc);line-height:1}
+.stat-label{font-size:.72rem;color:rgba(250,246,236,.5);margin-top:.2rem;text-transform:uppercase;letter-spacing:.08em}
+.hero-visual{display:flex;flex-direction:column;gap:1rem}
+.herb-pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:1rem 1.25rem;display:flex;align-items:center;gap:.9rem;transition:.3s;cursor:default}
+.herb-pill:hover{background:rgba(255,255,255,.11);transform:translateX(4px)}
+.herb-pill-icon{font-size:1.8rem;line-height:1}
+.herb-pill-text strong{display:block;color:var(--k);font-size:.88rem}
+.herb-pill-text span{color:rgba(250,246,236,.5);font-size:.76rem}
+
+/* ===== TRUST BAR ===== */
+.trust-bar{background:white;border-bottom:1px solid rgba(0,0,0,.06);padding:.9rem 2.5rem;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--tm)}
+.trust-item strong{color:var(--h)}
+.trust-sep{width:1px;height:20px;background:rgba(0,0,0,.1)}
+
+/* ===== SECTION COMMONS ===== */
+.section{padding:5rem 2.5rem}
+.container{max-width:1100px;margin:0 auto}
+.sec-label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--hm);margin-bottom:.4rem;text-align:center}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--h);text-align:center;margin-bottom:.5rem;line-height:1.2}
+.sec-sub{text-align:center;color:var(--tl);font-size:.88rem;margin-bottom:3rem}
+
+/* ===== HERBAL HIGHLIGHT ===== */
+.herbal-section{background:white}
+.filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem}
+.fbtn{background:none;border:1px solid var(--hm);color:var(--hm);padding:.4rem 1.1rem;border-radius:2rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;cursor:pointer;transition:.2s;white-space:nowrap}
+.fbtn.active,.fbtn:hover{background:var(--hm);color:white}
+.herb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
+.herb-card{background:var(--k);border-radius:1rem;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:.25s}
+.herb-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.09)}
+.hc-top{padding:1.25rem 1.5rem 1rem;border-bottom:1px solid rgba(0,0,0,.05);display:flex;gap:.9rem;align-items:flex-start}
+.hc-icon{font-size:2.2rem;line-height:1;flex-shrink:0;margin-top:.1rem}
+.hc-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--h)}
+.hc-latin{font-style:italic;color:var(--tl);font-size:.76rem;margin-bottom:.4rem}
+.hc-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.htag{font-size:.68rem;padding:.15rem .6rem;border-radius:2rem;background:var(--hp);color:var(--hm);font-weight:500}
+.htag.r{background:#fde8df;color:var(--acc2)}
+.htag.y{background:#fdf3d0;color:#7a5800}
+.hc-body{padding:1rem 1.5rem}
+.hc-manfaat{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tl);margin-bottom:.5rem}
+.hc-list{list-style:none;margin-bottom:1rem}
+.hc-list li{font-size:.84rem;color:var(--tm);padding:.22rem 0;display:flex;gap:.5rem;align-items:flex-start}
+.hc-list li::before{content:'✓';color:var(--hl);font-weight:700;flex-shrink:0}
+.cara-box{background:white;border-radius:.75rem;padding:1rem;border:1px solid rgba(0,0,0,.06)}
+.cara-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--c);margin-bottom:.6rem}
+.bahan-head{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tl);margin-bottom:.3rem}
+.bahan-ul{list-style:disc;padding-left:1.1rem;font-size:.8rem;color:var(--tm);margin-bottom:.7rem}
+.langkah-ol{list-style:none;counter-reset:st}
+.langkah-ol li{counter-increment:st;font-size:.8rem;color:var(--tm);padding:.28rem 0 .28rem 1.9rem;position:relative;border-top:1px dashed rgba(0,0,0,.07)}
+.langkah-ol li:first-child{border-top:none}
+.langkah-ol li::before{content:counter(st);position:absolute;left:0;top:.35rem;width:1.25rem;height:1.25rem;background:var(--hm);color:white;font-size:.62rem;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.warn-box{margin-top:.7rem;background:#fff8e1;border-left:3px solid var(--acc);border-radius:0 .4rem .4rem 0;padding:.45rem .7rem;font-size:.75rem;color:#7a5800}
+
+/* ===== TOKO ===== */
+.toko-section{background:var(--k)}
+.kategori-nav{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem}
+.knav{background:none;border:1px solid rgba(0,0,0,.15);color:var(--tm);padding:.45rem 1.2rem;border-radius:2rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;cursor:pointer;transition:.2s}
+.knav.active,.knav:hover{background:var(--h);color:white;border-color:var(--h)}
+.produk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.25rem}
+.produk-card{background:white;border-radius:1rem;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:.25s;display:flex;flex-direction:column}
+.produk-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.09)}
+.pc-img{height:170px;background:var(--hp);display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative}
+.pc-badge{position:absolute;top:.6rem;left:.6rem;background:var(--acc2);color:white;font-size:.66rem;font-weight:600;padding:.2rem .6rem;border-radius:2rem}
+.pc-badge.new{background:var(--hm)}
+.pc-body{padding:1rem;flex:1;display:flex;flex-direction:column}
+.pc-kat{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--hl);margin-bottom:.2rem;font-weight:500}
+.pc-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--h);margin-bottom:.3rem;line-height:1.3}
+.pc-desc{font-size:.78rem;color:var(--tl);margin-bottom:.7rem;line-height:1.6;flex:1}
+.pc-manfaat{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.9rem}
+.pm{font-size:.66rem;background:var(--hp);color:var(--hm);padding:.1rem .5rem;border-radius:2rem}
+.pc-harga{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--acc2);margin-bottom:.8rem}
+.pc-harga span{font-size:.75rem;color:var(--tl);font-family:'Plus Jakarta Sans',sans-serif;font-weight:400;text-decoration:line-through;margin-left:.3rem}
+.btn-shopee{display:flex;align-items:center;justify-content:center;gap:.45rem;background:#ee4d2d;color:white;text-decoration:none;padding:.6rem 1rem;border-radius:.5rem;font-size:.8rem;font-weight:600;transition:.2s}
+.btn-shopee:hover{background:#d94527}
+.btn-shopee svg{width:16px;height:16px;fill:white;flex-shrink:0}
+
+/* ===== WHY US ===== */
+.why-section{background:white}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.why-card{padding:1.5rem;border-radius:1rem;background:var(--k);border:1px solid rgba(0,0,0,.05);text-align:center}
+.why-icon{font-size:2rem;margin-bottom:.8rem}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--h);margin-bottom:.4rem}
+.why-desc{font-size:.82rem;color:var(--tm);line-height:1.7}
+
+/* ===== TESTIMONIAL ===== */
+.testi-section{background:var(--h);padding:4rem 2.5rem}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2.5rem}
+.testi-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:1rem;padding:1.25rem}
+.testi-stars{color:var(--acc);font-size:.9rem;margin-bottom:.6rem;letter-spacing:.1em}
+.testi-text{font-size:.85rem;color:rgba(250,246,236,.8);line-height:1.7;margin-bottom:.9rem;font-style:italic}
+.testi-name{font-weight:600;color:var(--k);font-size:.82rem}
+.testi-loc{font-size:.75rem;color:rgba(250,246,236,.45)}
+.testi-section .sec-title{color:var(--k)}
+.testi-section .sec-label{color:var(--hl)}
+.testi-section .sec-sub{color:rgba(250,246,236,.55)}
+
+/* ===== CTA ===== */
+.cta-section{background:var(--km);padding:4rem 2.5rem;text-align:center}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--h);margin-bottom:.8rem}
+.cta-section p{color:var(--tm);font-size:.9rem;max-width:520px;margin:0 auto 2rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-wa{display:inline-flex;align-items:center;gap:.5rem;background:#25d366;color:white;text-decoration:none;padding:.75rem 1.8rem;border-radius:.5rem;font-weight:600;font-size:.88rem;transition:.2s}
+.btn-wa:hover{background:#1eba59}
+.btn-shopee-main{display:inline-flex;align-items:center;gap:.5rem;background:#ee4d2d;color:white;text-decoration:none;padding:.75rem 1.8rem;border-radius:.5rem;font-weight:600;font-size:.88rem;transition:.2s}
+.btn-shopee-main:hover{background:#d94527}
+
+/* ===== FOOTER ===== */
+footer{background:var(--h);color:rgba(250,246,236,.5);padding:2rem 2.5rem;text-align:center;font-size:.8rem}
+footer a{color:var(--acc);text-decoration:none}
+.footer-links{display:flex;gap:1.5rem;justify-content:center;margin-bottom:.8rem;flex-wrap:wrap}
+.footer-links a{color:rgba(250,246,236,.6);text-decoration:none;font-size:.8rem;transition:.2s}
+.footer-links a:hover{color:var(--acc)}
+
+.disclaimer{background:rgba(0,0,0,.15);border-radius:.5rem;padding:.75rem 1rem;font-size:.75rem;color:rgba(250,246,236,.4);max-width:700px;margin:1.5rem auto 0;line-height:1.6}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-content{grid-template-columns:1fr;gap:2rem}
+  .hero-visual{display:none}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .section{padding:3rem 1.25rem}
+  nav{padding:0 1.25rem}
+  .trust-sep{display:none}
+  .trust-bar{gap:1rem;padding:.9rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kayon <span>Herbal</span></a>
+  <div class="nav-links">
+    <a href="#herbal">Panduan Herbal</a>
+    <a href="#toko">Toko Produk</a>
+    <a href="#tentang">Tentang Kami</a>
+    <a href="https://wa.me/62816268810" class="nav-cta">💬 Konsultasi</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#herbal" onclick="toggleMenu()">Panduan Herbal</a>
+  <a href="#toko" onclick="toggleMenu()">Toko Produk</a>
+  <a href="#tentang" onclick="toggleMenu()">Tentang Kami</a>
+  <a href="https://wa.me/62816268810">💬 Konsultasi WA</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-leaf"></div>
+  <div class="hero-content container">
+    <div>
+      <div class="hero-badge">🌿 Warisan Herbal Kediri, Jawa Timur</div>
+      <h1>Alam Sembuhkan,<br><em>Tradisi Menjaga</em></h1>
+      <p>Panduan lengkap obat herbal dari bahan pasar Kediri — beserta produk herbal pilihan berkualitas yang bisa langsung Anda pesan.</p>
+      <div class="hero-btns">
+        <a href="#herbal" class="btn-primary">🌱 Lihat Panduan Herbal</a>
+        <a href="#toko" class="btn-outline">🛒 Kunjungi Toko</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="stat-num">9+</div>
+          <div class="stat-label">Jenis Herbal</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Alami</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">⭐4.9</div>
+          <div class="stat-label">Rating Toko</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="herb-pill"><div class="herb-pill-icon">🫚</div><div class="herb-pill-text"><strong>Jahe Merah</strong><span>Anti-inflamasi & imunitas</span></div></div>
+      <div class="herb-pill"><div class="herb-pill-icon">🟡</div><div class="herb-pill-text"><strong>Kunyit Asam</strong><span>Antioksidan & pencernaan</span></div></div>
+      <div class="herb-pill"><div class="herb-pill-icon">🌾</div><div class="herb-pill-text"><strong>Temulawak</strong><span>Hati sehat & nafsu makan</span></div></div>
+      <div class="herb-pill"><div class="herb-pill-icon">🧄</div><div class="herb-pill-text"><strong>Bawang Putih</strong><span>Antibiotik alami & jantung</span></div></div>
+      <div class="herb-pill"><div class="herb-pill-icon">🪵</div><div class="herb-pill-text"><strong>Kayu Manis</strong><span>Gula darah & kolesterol</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">✅ <span><strong>Bahan dari Pasar Lokal</strong> Kediri & sekitarnya</span></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">🏪 <span><strong>Toko Resmi</strong> di Shopee</span></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">🚚 <span><strong>Pengiriman</strong> ke seluruh Indonesia</span></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">💬 <span><strong>Konsultasi Gratis</strong> via WhatsApp</span></div>
+</div>
+
+<!-- ===== PANDUAN HERBAL ===== -->
+<section class="section herbal-section" id="herbal">
+  <div class="container">
+    <p class="sec-label">Apotek Hidup</p>
+    <h2 class="sec-title">Panduan Ramuan Herbal Tradisional</h2>
+    <p class="sec-sub">Bahan mudah didapat di pasar Kediri — lengkap dengan cara pembuatan di rumah</p>
+
+    <div class="filter-bar">
+      <button class="fbtn active" onclick="filterH('semua',this)">Semua</button>
+      <button class="fbtn" onclick="filterH('imun',this)">🛡 Imunitas</button>
+      <button class="fbtn" onclick="filterH('pencernaan',this)">🌿 Pencernaan</button>
+      <button class="fbtn" onclick="filterH('pegal',this)">💪 Pegal & Nyeri</button>
+      <button class="fbtn" onclick="filterH('demam',this)">🌡 Demam & Flu</button>
+      <button class="fbtn" onclick="filterH('gula',this)">🩸 Gula Darah</button>
+    </div>
+
+    <div class="herb-grid" id="herbGrid">
+
+      <!-- JAHE MERAH -->
+      <div class="herb-card" data-k="imun demam pegal">
+        <div class="hc-top">
+          <div class="hc-icon">🫚</div>
+          <div>
+            <div class="hc-name">Jahe Merah</div>
+            <div class="hc-latin">Zingiber officinale var. rubrum</div>
+            <div class="hc-tags"><span class="htag">Imunitas</span><span class="htag r">Demam & Flu</span><span class="htag">Pegal</span></div>
+          </div>
+        </div>
+        <div class="hc-body">
+          <div class="hc-manfaat">Manfaat Utama</div>
+          <ul class="hc-list">
+            <li>Menghangatkan tubuh & melancarkan sirkulasi darah</li>
+            <li>Meredakan mual, masuk angin, dan kembung</li>
+            <li>Anti-inflamasi alami untuk nyeri sendi & pegal</li>
+          </ul>
+          <div class="cara-box">
+            <div class="cara-title">🧪 Wedang Jahe Merah</div>
+            <div class="bahan-head">Bahan-bahan</div>
+            <ul class="bahan-ul"><li>3 ruas jahe merah (±30 gram)</li><li>2 gelas air (400 ml)</li><li>2 sdm gula merah / madu</li><li>1 batang serai geprek</li></ul>
+            <ol class="langkah-ol">
+              <li>Bakar jahe sebentar di api, geprek</li>
+              <li>Rebus bersama serai hingga mendidih 10 menit</li>
+              <li>Tambahkan gula merah, aduk, matikan api</li>
+              <li>Saring, sajikan hangat 1–2x sehari</li>
+            </ol>
+            <div class="warn-box">⚠️ Hati-hati untuk penderita maag aktif & ibu hamil trimester pertama</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KUNYIT -->
+      <div class="herb-card" data-k="imun pencernaan gula">
+        <div class="hc-top">
+          <div class="hc-icon">🟡</div>
+          <div>
+            <div class="hc-name">Kunyit</div>
+            <div class="hc-latin">Curcuma longa</div>
+            <div class="hc-tags"><span class="htag y">Anti-Inflamasi</span><span class="htag">Pencernaan</span><span class="htag">Imunitas</span></div>
+          </div>
+        </div>
+        <div class="hc-body">
+          <div class="hc-manfaat">Manfaat Utama</div>
+          <ul class="hc-list">
+            <li>Kurkumin sebagai anti-inflamasi & antioksidan kuat</li>
+            <li>Membantu kesehatan lambung dan usus</li>
+            <li>Menjaga kadar gula darah stabil</li>
+          </ul>
+          <div class="cara-box">
+            <div class="cara-title">🧪 Jamu Kunyit Asam</div>
+            <div class="bahan-head">Bahan-bahan</div>
+            <ul class="bahan-ul"><li>3 ruas kunyit (±25 gram)</li><li>1 sdm asam jawa</li><li>2 gelas air</li><li>3 sdm gula jawa + sedikit garam</li></ul>
+            <ol class="langkah-ol">
+              <li>Bakar kunyit, parut atau blender halus</li>
+              <li>Rebus bersama asam jawa 15 menit</li>
+              <li>Tambahkan gula jawa & garam, aduk rata</li>
+              <li>Saring, simpan di kulkas, konsumsi 1 gelas/hari</li>
+            </ol>
+            <div class="warn-box">⚠️ Tidak dianjurkan dosis tinggi jangka panjang untuk penderita gangguan empedu</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEMULAWAK -->
+      <div class="herb-card" data-k="pencernaan imun gula">
+        <div class="hc-top">
+          <div class="hc-icon">🌾</div>
+          <div>
+            <div class="hc-name">Temulawak</div>
+            <div class="hc-latin">Curcuma zanthorrhiza</div>
+            <div class="hc-tags"><span class="htag">Hati & Liver</span><span class="htag">Pencernaan</span><span class="htag y">Nafsu Makan</span></div>
+          </div>
+        </div>
+        <div class="hc-body">
+          <div class="hc-manfaat">Manfaat Utama</div>
+          <ul class="hc-list">
+            <li>Melindungi dan meregenerasi sel-sel hati</li>
+            <li>Menambah nafsu makan — baik untuk anak-anak</li>
+            <li>Menurunkan kolesterol & trigliserida</li>
+          </ul>
+          <div class="cara-box">
+            <div class="cara-title">🧪 Rebusan Temulawak</div>
+            <div class="bahan-head">Bahan-bahan</div>
+            <ul class="bahan-ul"><li>2–3 ruas temulawak segar</li><li>3 gelas air (600 ml)</li><li>2 sdm gula batu / madu</li><li>1 ruas jahe (opsional)</li></ul>
+            <ol class="langkah-ol">
+              <li>Iris tipis temulawak tanpa dikupas</li>
+              <li>Rebus 15 menit hingga air tersisa 2 gelas</li>
+              <li>Tambahkan gula batu, aduk larut</li>
+              <li>Saring, minum hangat 2x sehari</li>
+            </ol>
+            <div class="warn-box">⚠️ Tidak untuk ibu hamil & penderita batu empedu</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KENCUR -->
+      <div class="herb-card" data-k="pencernaan pegal demam">
+        <div class="hc-top">
+          <div class="hc-icon">🪨</div>
+          <div>
+            <div class="hc-name">Kencur</div>
+            <div class="hc-latin">Kaempferia galanga</div>
+            <div class="hc-tags"><span class="htag">Batuk</span><span class="htag">Pencernaan</span><span class="htag r">Pegal Linu</span></div>
+          </div>
+        </div>
+        <div class="hc-body">
+          <div class="hc-manfaat">Manfaat Utama</div>
+          <ul class="hc-list">
+            <li>Melegakan batuk dan radang tenggorokan</li>
+            <li>Mengurangi pegal setelah bekerja berat</li>
+            <li>Melancarkan pencernaan & mengatasi diare</li>
+          </ul>
+          <div class="cara-box">
+            <div class="cara-title">🧪 Beras Kencur</div>
+            <div class="bahan-head">Bahan-bahan</div>
+            <ul class="bahan-ul"><li>3 ruas kencur segar</li><li>3 sdm beras (rendam 1 jam)</li><li>3 gelas air matang</li><li>3 sdm gula jawa + sedikit asam jawa</li></ul>
+            <ol class="langkah-ol">
+              <li>Haluskan kencur & beras rendaman</li>
+              <li>Campur dengan air matang, aduk rata</li>
+              <li>Masak api kecil, tambahkan gula & asam</li>
+              <li>Rebus 10 menit, saring, sajikan hangat/dingin</li>
+            </ol>
+            <div class="warn-box">⚠️ Tidak dianjurkan untuk ibu hamil muda</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAWANG PUTIH -->
+      <div class="herb-card" data-k="imun demam gula">
+        <div class="hc-top">
+          <div class="hc-icon">🧄</div>
+          <div>
+            <div class="hc-name">Bawang Putih</div>
+            <div class="hc-latin">Allium sativum</div>
+            <div class="hc-tags"><span class="htag r">Antibiotik Alami</span><span class="htag">Tekanan Darah</span><span class="htag">Imunitas</span></div>
+          </div>
+        </div>
+        <div class="hc-body">
+          <div class="hc-manfaat">Manfaat Utama</div>
+          <ul class="hc-list">
+            <li>Allicin: antibakteri & antivirus alami</li>
+            <li>Membantu menurunkan tekanan darah tinggi</li>
+            <li>Menurunkan kolesterol & melindungi jantung</li>
+          </ul>
+          <div class="cara-box">
+            <div class="cara-title">🧪 Cara Konsumsi Bawang Putih</div>
+            <div class="bahan-head">Bahan-bahan</div>
+            <ul class="bahan-ul"><li>2–3 siung bawang putih segar</li><li>1 sdm madu</li><li>1 gelas air hangat</li></ul>
+            <ol class="langkah-ol">
+              <li>Cincang halus, diamkan 15 menit (aktifkan allicin)</li>
+              <li>Campur dengan madu</li>
+              <li>Telan dengan air hangat, pagi hari sebelum makan</li>
+              <li>Mulai dari 1 siung jika belum terbiasa</li>
+            </ol>
+            <div class="warn-box">⚠️ Bisa mengiritasi lambung sensitif — konsumsi bersama makanan jika perlu</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KAYU MANIS -->
+      <div class="herb-card" data-k="gula imun pencernaan">
+        <div class="hc-top">
+          <div class="hc-icon">🪵</div>
+          <div>
+            <div class="hc-name">Kayu Manis</div>
+            <div class="hc-latin">Cinnamomum verum</div>
+            <div class="hc-tags"><span class="htag y">Gula Darah</span><span class="htag">Kolesterol</span><span class="htag">Antioksidan</span></div>
+          </div>
+        </div>
+        <div class="hc-body">
+          <div class="hc-manfaat">Manfaat Utama</div>
+          <ul class="hc-list">
+            <li>Membantu mengontrol kadar gula darah</li>
+            <li>Menurunkan kolesterol LDL & trigliserida</li>
+            <li>Antioksidan kuat — melindungi sel dari kerusakan</li>
+          </ul>
+          <div class="cara-box">
+            <div class="cara-title">🧪 Teh Kayu Manis</div>
+            <div class="bahan-head">Bahan-bahan</div>
+            <ul class="bahan-ul"><li>1–2 batang kayu manis (±5 cm)</li><li>2 gelas air (400 ml)</li><li>Madu secukupnya</li></ul>
+            <ol class="langkah-ol">
+              <li>Rebus kayu manis dalam air 10 menit</li>
+              <li>Angkat dan dinginkan sedikit</li>
+              <li>Tambahkan madu setelah suhu turun</li>
+              <li>Minum 1 gelas tiap pagi sebelum sarapan</li>
+            </ol>
+            <div class="warn-box">⚠️ Penderita diabetes konsumsi obat wajib konsultasi dokter dulu</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAMBILOTO -->
+      <div class="herb-card" data-k="imun demam gula">
+        <div class="hc-top">
+          <div class="hc-icon">🌿</div>
+          <div>
+            <div class="hc-name">Sambiloto</div>
+            <div class="hc-latin">Andrographis paniculata</div>
+            <div class="hc-tags"><span class="htag r">Demam</span><span class="htag y">Gula Darah</span><span class="htag">Antivirus</span></div>
+          </div>
+        </div>
+        <div class="hc-body">
+          <div class="hc-manfaat">Manfaat Utama</div>
+          <ul class="hc-list">
+            <li>Antipiretik alami — menurunkan demam efektif</li>
+            <li>Antivirus & antibakteri kuat</li>
+            <li>Membantu mengontrol gula darah</li>
+          </ul>
+          <div class="cara-box">
+            <div class="cara-title">🧪 Rebusan Sambiloto</div>
+            <div class="bahan-head">Bahan-bahan</div>
+            <ul class="bahan-ul"><li>10–15 lembar daun sambiloto segar</li><li>3 gelas air (600 ml)</li><li>Madu & 1 ruas jahe</li></ul>
+            <ol class="langkah-ol">
+              <li>Cuci bersih daun sambiloto</li>
+              <li>Rebus bersama jahe 15–20 menit</li>
+              <li>Saring, tambahkan madu</li>
+              <li>Minum 2x sehari, 5–7 hari saat sakit</li>
+            </ol>
+            <div class="warn-box">⚠️ Tidak untuk ibu hamil & penderita autoimun. Rasanya sangat pahit — normal.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAUN SIRIH -->
+      <div class="herb-card" data-k="imun pencernaan">
+        <div class="hc-top">
+          <div class="hc-icon">🍃</div>
+          <div>
+            <div class="hc-name">Daun Sirih</div>
+            <div class="hc-latin">Piper betle</div>
+            <div class="hc-tags"><span class="htag">Antibakteri</span><span class="htag">Antiseptik</span><span class="htag">Kewanitaan</span></div>
+          </div>
+        </div>
+        <div class="hc-body">
+          <div class="hc-manfaat">Manfaat Utama</div>
+          <ul class="hc-list">
+            <li>Antibakteri alami — mengatasi infeksi ringan</li>
+            <li>Menjaga kesehatan organ kewanitaan</li>
+            <li>Menghilangkan bau badan & mulut</li>
+          </ul>
+          <div class="cara-box">
+            <div class="cara-title">🧪 Rebusan Daun Sirih</div>
+            <div class="bahan-head">Bahan-bahan</div>
+            <ul class="bahan-ul"><li>7–10 lembar daun sirih segar</li><li>1 liter air bersih</li></ul>
+            <ol class="langkah-ol">
+              <li>Cuci bersih, potong kasar</li>
+              <li>Rebus dalam 1 liter air hingga mendidih 15 menit</li>
+              <li>Dinginkan hingga suam-suam kuku</li>
+              <li>Gunakan untuk berkumur atau membilas</li>
+            </ol>
+            <div class="warn-box">⚠️ Hanya untuk pemakaian luar. Jangan dikonsumsi dalam jumlah besar</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIDAH BUAYA -->
+      <div class="herb-card" data-k="pencernaan imun">
+        <div class="hc-top">
+          <div class="hc-icon">🌵</div>
+          <div>
+            <div class="hc-name">Lidah Buaya</div>
+            <div class="hc-latin">Aloe vera</div>
+            <div class="hc-tags"><span class="htag">Pencernaan</span><span class="htag">Kulit & Rambut</span><span class="htag y">Detoks</span></div>
+          </div>
+        </div>
+        <div class="hc-body">
+          <div class="hc-manfaat">Manfaat Utama</div>
+          <ul class="hc-list">
+            <li>Menyejukkan lambung & mengatasi asam lambung ringan</li>
+            <li>Detoksifikasi alami & melancarkan BAB</li>
+            <li>Gel untuk luka bakar, jerawat, rambut</li>
+          </ul>
+          <div class="cara-box">
+            <div class="cara-title">🧪 Minuman Aloe Vera</div>
+            <div class="bahan-head">Bahan-bahan</div>
+            <ul class="bahan-ul"><li>1 pelepah lidah buaya sedang</li><li>2 gelas air matang</li><li>Madu + perasan jeruk nipis</li></ul>
+            <ol class="langkah-ol">
+              <li>Kupas, ambil gel saja</li>
+              <li>Rendam air garam 10 menit, bilas bersih</li>
+              <li>Blender atau potong dadu, campur dengan air & madu</li>
+              <li>Sajikan dingin, max 1–2x seminggu</li>
+            </ol>
+            <div class="warn-box">⚠️ Tidak untuk ibu hamil & menyusui. Jangan berlebihan</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end herb-grid -->
+  </div>
+</section>
+
+<!-- ===== TOKO PRODUK ===== -->
+<section class="section toko-section" id="toko">
+  <div class="container">
+    <p class="sec-label">Toko Shopee Resmi</p>
+    <h2 class="sec-title">Produk Herbal Pilihan</h2>
+    <p class="sec-sub">Semua produk dibuat dari bahan alami segar — dikirim ke seluruh Indonesia</p>
+
+    <div class="kategori-nav">
+      <button class="knav active" onclick="filterP('semua',this)">Semua Produk</button>
+      <button class="knav" onclick="filterP('jamu',this)">🍵 Jamu & Minuman</button>
+      <button class="knav" onclick="filterP('kapsul',this)">💊 Kapsul & Suplemen</button>
+      <button class="knav" onclick="filterP('minyak',this)">🫙 Minyak Herbal</button>
+      <button class="knav" onclick="filterP('simplisia',this)">🌿 Simplisia Kering</button>
+    </div>
+
+    <div class="produk-grid" id="produkGrid">
+
+      <!-- JAMU -->
+      <div class="produk-card" data-p="jamu">
+        <div class="pc-img">🍵<span class="pc-badge new">Terlaris</span></div>
+        <div class="pc-body">
+          <div class="pc-kat">Jamu & Minuman</div>
+          <div class="pc-name">Wedang Jahe Merah Instan</div>
+          <div class="pc-desc">Jahe merah pilihan, dipadukan rempah serai & kayu manis. Tinggal seduh, langsung hangat.</div>
+          <div class="pc-manfaat"><span class="pm">Imunitas</span><span class="pm">Anti-Pegal</span><span class="pm">Masuk Angin</span></div>
+          <div class="pc-harga">Rp 25.000 <span>Rp 35.000</span></div>
+          <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v2H7v2h4v2H7v2h4v2h2v-2h4v-2h-4v-2h4V9h-4V7h-2z"/></svg>
+            Beli di Shopee
+          </a>
+        </div>
+      </div>
+
+      <div class="produk-card" data-p="jamu">
+        <div class="pc-img">🟡</div>
+        <div class="pc-body">
+          <div class="pc-kat">Jamu & Minuman</div>
+          <div class="pc-name">Jamu Kunyit Asam Segar</div>
+          <div class="pc-desc">Kunyit segar pilihan + asam jawa jawa alami. Sudah jadi, siap minum. Kemasan 500 ml.</div>
+          <div class="pc-manfaat"><span class="pm">Pencernaan</span><span class="pm">Anti-Inflamasi</span><span class="pm">Segar</span></div>
+          <div class="pc-harga">Rp 18.000 <span>Rp 25.000</span></div>
+          <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v2H7v2h4v2H7v2h4v2h2v-2h4v-2h-4v-2h4V9h-4V7h-2z"/></svg>
+            Beli di Shopee
+          </a>
+        </div>
+      </div>
+
+      <div class="produk-card" data-p="jamu">
+        <div class="pc-img">🌾</div>
+        <div class="pc-body">
+          <div class="pc-kat">Jamu & Minuman</div>
+          <div class="pc-name">Paket Beras Kencur + Temulawak</div>
+          <div class="pc-desc">Dua jamu tradisional favorit keluarga dalam satu paket hemat. Masing-masing 500 ml.</div>
+          <div class="pc-manfaat"><span class="pm">Nafsu Makan</span><span class="pm">Hati Sehat</span><span class="pm">Hemat</span></div>
+          <div class="pc-harga">Rp 35.000 <span>Rp 48.000</span></div>
+          <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v2H7v2h4v2H7v2h4v2h2v-2h4v-2h-4v-2h4V9h-4V7h-2z"/></svg>
+            Beli di Shopee
+          </a>
+        </div>
+      </div>
+
+      <!-- KAPSUL -->
+      <div class="produk-card" data-p="kapsul">
+        <div class="pc-img">💊<span class="pc-badge">Hot</span></div>
+        <div class="pc-body">
+          <div class="pc-kat">Kapsul & Suplemen</div>
+          <div class="pc-name">Kapsul Kunyit + Temulawak</div>
+          <div class="pc-desc">Ekstrak kunyit & temulawak dalam kapsul praktis. Isi 60 kapsul, cukup untuk 1 bulan.</div>
+          <div class="pc-manfaat"><span class="pm">Liver</span><span class="pm">Antioksidan</span><span class="pm">Praktis</span></div>
+          <div class="pc-harga">Rp 55.000 <span>Rp 75.000</span></div>
+          <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v2H7v2h4v2H7v2h4v2h2v-2h4v-2h-4v-2h4V9h-4V7h-2z"/></svg>
+            Beli di Shopee
+          </a>
+        </div>
+      </div>
+
+      <div class="produk-card" data-p="kapsul">
+        <div class="pc-img">🌿</div>
+        <div class="pc-body">
+          <div class="pc-kat">Kapsul & Suplemen</div>
+          <div class="pc-name">Kapsul Sambiloto Herbal</div>
+          <div class="pc-desc">Sambiloto terstandar untuk imunitas harian. Isi 30 kapsul. Tanpa bahan kimia tambahan.</div>
+          <div class="pc-manfaat"><span class="pm">Imunitas</span><span class="pm">Antivirus</span><span class="pm">Gula Darah</span></div>
+          <div class="pc-harga">Rp 45.000 <span>Rp 60.000</span></div>
+          <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v2H7v2h4v2H7v2h4v2h2v-2h4v-2h-4v-2h4V9h-4V7h-2z"/></svg>
+            Beli di Shopee
+          </a>
+        </div>
+      </div>
+
+      <!-- MINYAK -->
+      <div class="produk-card" data-p="minyak">
+        <div class="pc-img">🫙<span class="pc-badge new">Baru</span></div>
+        <div class="pc-body">
+          <div class="pc-kat">Minyak Herbal</div>
+          <div class="pc-name">Minyak Urut Jahe Merah</div>
+          <div class="pc-desc">Minyak urut tradisional dari jahe merah & cengkeh. Untuk pegal, nyeri sendi & masuk angin.</div>
+          <div class="pc-manfaat"><span class="pm">Pegal</span><span class="pm">Nyeri Sendi</span><span class="pm">Hangat</span></div>
+          <div class="pc-harga">Rp 30.000 <span>Rp 42.000</span></div>
+          <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v2H7v2h4v2H7v2h4v2h2v-2h4v-2h-4v-2h4V9h-4V7h-2z"/></svg>
+            Beli di Shopee
+          </a>
+        </div>
+      </div>
+
+      <div class="produk-card" data-p="minyak">
+        <div class="pc-img">🌿</div>
+        <div class="pc-body">
+          <div class="pc-kat">Minyak Herbal</div>
+          <div class="pc-name">Minyak Kayu Putih + Serai</div>
+          <div class="pc-desc">Perpaduan kayu putih & serai wangi. Melegakan pernapasan, menghangatkan tubuh anak & dewasa.</div>
+          <div class="pc-manfaat"><span class="pm">Flu</span><span class="pm">Pernapasan</span><span class="pm">Aman Anak</span></div>
+          <div class="pc-harga">Rp 22.000 <span>Rp 30.000</span></div>
+          <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v2H7v2h4v2H7v2h4v2h2v-2h4v-2h-4v-2h4V9h-4V7h-2z"/></svg>
+            Beli di Shopee
+          </a>
+        </div>
+      </div>
+
+      <!-- SIMPLISIA -->
+      <div class="produk-card" data-p="simplisia">
+        <div class="pc-img">🌱</div>
+        <div class="pc-body">
+          <div class="pc-kat">Simplisia Kering</div>
+          <div class="pc-name">Paket Simplisia Empon-Empon</div>
+          <div class="pc-desc">Jahe merah + kunyit + temulawak kering siap seduh. Isi 250 gram per bahan. Bebas pengawet.</div>
+          <div class="pc-manfaat"><span class="pm">Serbaguna</span><span class="pm">Tahan Lama</span><span class="pm">DIY Jamu</span></div>
+          <div class="pc-harga">Rp 40.000 <span>Rp 55.000</span></div>
+          <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v2H7v2h4v2H7v2h4v2h2v-2h4v-2h-4v-2h4V9h-4V7h-2z"/></svg>
+            Beli di Shopee
+          </a>
+        </div>
+      </div>
+
+      <div class="produk-card" data-p="simplisia">
+        <div class="pc-img">🍃</div>
+        <div class="pc-body">
+          <div class="pc-kat">Simplisia Kering</div>
+          <div class="pc-name">Daun Sambiloto Kering</div>
+          <div class="pc-desc">Sambiloto kering berkualitas tinggi, dikeringkan alami tanpa pemanas. Isi 100 gram.</div>
+          <div class="pc-manfaat"><span class="pm">Imunitas</span><span class="pm">Demam</span><span class="pm">Murni</span></div>
+          <div class="pc-harga">Rp 20.000 <span>Rp 28.000</span></div>
+          <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v2H7v2h4v2H7v2h4v2h2v-2h4v-2h-4v-2h4V9h-4V7h-2z"/></svg>
+            Beli di Shopee
+          </a>
+        </div>
+      </div>
+
+    </div><!-- end produk-grid -->
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section why-section" id="tentang">
+  <div class="container">
+    <p class="sec-label">Mengapa Kami</p>
+    <h2 class="sec-title">Kepercayaan Keluarga Indonesia</h2>
+    <p class="sec-sub">Kayon Gallery Herbal hadir dari Kediri dengan misi melestarikan kearifan lokal</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🌱</div><div class="why-title">100% Alami</div><div class="why-desc">Semua bahan dipilih langsung dari pasar lokal Kediri, tanpa bahan kimia atau pengawet buatan.</div></div>
+      <div class="why-card"><div class="why-icon">📖</div><div class="why-title">Edukasi Terlebih Dulu</div><div class="why-desc">Kami percaya konsumen yang paham manfaat akan mendapat hasil terbaik dari setiap herbal.</div></div>
+      <div class="why-card"><div class="why-icon">🏠</div><div class="why-title">Produksi Rumahan</div><div class="why-desc">Dibuat dalam skala kecil dengan standar kebersihan tinggi untuk menjaga kualitas setiap batch.</div></div>
+      <div class="why-card"><div class="why-icon">💬</div><div class="why-title">Konsultasi Gratis</div><div class="why-desc">Tim kami siap membantu via WhatsApp untuk menentukan herbal atau produk yang paling cocok untuk Anda.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testi-section">
+  <div class="container">
+    <p class="sec-label">Testimoni Pelanggan</p>
+    <h2 class="sec-title">Mereka Sudah Merasakannya</h2>
+    <p class="sec-sub">Ribuan keluarga sudah mempercayai produk herbal Kayon Gallery</p>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-text">"Jamu kunyit asam sudah saya minum tiap pagi selama 2 bulan, perut terasa lebih nyaman dan badan lebih segar. Packagingnya juga rapi!"</div><div class="testi-name">Ibu Siti Rahayu</div><div class="testi-loc">Kediri, Jawa Timur</div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-text">"Minyak urut jahe merahnya enak banget aromanya, pegal-pegal setelah kerja di sawah langsung reda. Cocok buat suami saya yang sering pegal."</div><div class="testi-name">Mbak Dewi</div><div class="testi-loc">Nganjuk, Jawa Timur</div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★☆</div><div class="testi-text">"Kapsul sambiloto-nya membantu banget waktu musim hujan begini, anak-anak jadi jarang sakit. Pengiriman cepat dari Kediri ke Surabaya."</div><div class="testi-name">Pak Hendra</div><div class="testi-loc">Surabaya, Jawa Timur</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Mulai Hidup Sehat Hari Ini 🌿</h2>
+    <p>Konsultasikan kebutuhan herbal Anda, atau langsung kunjungi toko Shopee kami untuk pilih produk terbaik.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/62816268810" class="btn-wa">💬 Konsultasi via WhatsApp</a>
+      <a href="https://shopee.co.id/kayon_gallery" class="btn-shopee-main" target="_blank">🛒 Kunjungi Toko Shopee</a>
+    </div>
+    <div class="disclaimer">
+      ⚠️ <strong>Disclaimer:</strong> Informasi herbal di website ini bersifat edukatif. Tidak menggantikan diagnosis atau pengobatan medis profesional. Konsultasikan dengan dokter untuk kondisi penyakit serius.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="#herbal">Panduan Herbal</a>
+    <a href="#toko">Toko Produk</a>
+    <a href="#tentang">Tentang Kami</a>
+    <a href="https://wa.me/62816268810">Konsultasi</a>
+    <a href="https://shopee.co.id/kayon_gallery" target="_blank">Shopee Store</a>
+  </div>
+  <p>© 2025 Kayon Gallery Herbal — Dikelola oleh Risqi Maulana | Kediri, Jawa Timur</p>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function filterH(k, btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.herb-card').forEach(c=>{
+    c.style.display=(k==='semua'||c.dataset.k.includes(k))?'':'none';
+  });
+}
+function filterP(p, btn){
+  document.querySelectorAll('.knav').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.produk-card').forEach(c=>{
+    c.style.display=(p==='semua'||c.dataset.p===p)?'':'none';
+  });
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+  });
+});
+</script>
+</body>
+</html>
