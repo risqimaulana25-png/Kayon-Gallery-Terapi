@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Halaman Utama -->
+  <url>
+    <loc>https://kayon-gallery-terapi25.github.io/Kayon-Gallery-Terapi/</loc>
+    <lastmod>2024-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Section Panduan Herbal -->
+  <url>
+    <loc>https://kayon-gallery-terapi25.github.io/Kayon-Gallery-Terapi/#panduan</loc>
+    <lastmod>2024-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Section Produk -->
+  <url>
+    <loc>https://kayon-gallery-terapi25.github.io/Kayon-Gallery-Terapi/#produk</loc>
+    <lastmod>2024-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Section Tips Blog -->
+  <url>
+    <loc>https://kayon-gallery-terapi25.github.io/Kayon-Gallery-Terapi/#tips</loc>
+    <lastmod>2024-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Section FAQ -->
+  <url>
+    <loc>https://kayon-gallery-terapi25.github.io/Kayon-Gallery-Terapi/#faq</loc>
+    <lastmod>2024-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

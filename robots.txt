@@ -1,0 +1,19 @@
+# robots.txt untuk Kayon Gallery Herbal
+# Memperbolehkan semua search engine untuk mengindex website
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kayon-gallery-terapi25.github.io/Kayon-Gallery-Terapi/sitemap.xml
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
